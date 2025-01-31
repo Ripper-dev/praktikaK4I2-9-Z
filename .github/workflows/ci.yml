@@ -26,3 +26,10 @@ jobs:
         with:
           name: jacoco-report
           path: target/site/jacoco/
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+            with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: target/site/apidocs
